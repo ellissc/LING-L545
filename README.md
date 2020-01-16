@@ -1,4 +1,4 @@
 # SP19-LING-L545
-hello
+hello world, this is Ellis
 http://cl.indiana.edu/~ftyers/courses/2019/Autumn/L-545/
 
