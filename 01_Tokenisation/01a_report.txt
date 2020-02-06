@@ -1,0 +1,57 @@
+Ellis Cain
+L545
+
+Segmentation and tokenisation (01a practical)
+
+Segmentation:
+
+The two segmenters used were "pragmatic segmenter" and NTLK's punkt. Pragmatic segmenter is a rule-based sentence boundary detection program that can be used with many languages without having to configure it. NLTK's punkt is a tokenizer that divides text into a list of sentences using unsupervised algorithms to build a model of abbreviations, collocations, and words that start sentences. There was not a pretrained Silesian model, so I tried the default English model and the Polish model for the Silesian corpus.
+
+The source file used had 295 sentences, from which pragmatic segmenter generated 325 lines (~10% error rate), and the nltk punkt polish model generated 358 lines (~21% error rate).
+
+I myself cannot read Silesian, but from looking over the output from the pragmatic segmenter, English model - punkt, and Polish model -punkt, the pragmatic segmenter worked the best, followed by the Polish model - punkt, with the English model - punkt in last. All of the segmenters were able to generally catch basic sentences, but pragmatic segmenter did the best with recognizing abbreviations and collocations. Both the punkt models (English and Polish) had trouble with correctly recognizing abbreviations and collocations.
+
+Tokenisation:
+
+Implementation of maxmatch:
+
+import csv
+def maxmatch(text, dictionary):
+    if len(text) == 0: #if space, return nothing
+        return ""
+    for i in range(len(text),-1, -1): #reverse for loop of sentence
+        firstword = text[:i] #first part of the sentence
+        remainder = text[i:] # remainder
+        if firstword in dictionary: #reverse shrinks scope of sentence till it finds the longest word in the sentence that is in the dictionary
+            return firstword + ' ' + maxmatch(remainder, dictionary)#returns found word and iterates to remainder
+    firstword = text[0] #no word was found on the first try, so returns one-character word
+    remainder = text[1:]
+    return firstword + ' ' + maxmatch(remainder, dictionary)
+
+f = open("nonum_dict.txt","r")
+text = f.read()
+dict_array = []
+word = ''
+for char in text:
+    if char == '\n':
+        dict_array.append(word)
+        word = ''
+    else:
+        word = word + char
+
+g = open("japanese_sample_text.txt","r")
+sample = g.read()
+
+print(maxmatch(sample, dict_array))
+
+How to use this version of maxmatch:
+The stript requires files "nonum_dict.txt" and "japanese_sample_text.txt", where nonum_dict is a japanese text file dictionary generated from the ja_gsd-ud-train.conllu (with each new entry on a new line) and japanese_sample_text is the text file with japanese that is going to be used in the tokenizer (the version I used gets examples from the " "test.conllu).
+The script can be run with the command:
+python3 dict.py > hypothesis.txt
+
+The WER python program gave a word error rate of 39.56%, which is a relatively good word error rate. The output is as follows:
+REF: これ に 不快感   を 示す 住民 は い  まし た が  , 現在 , 表立っ    て 反対 や 抗議 の 声 を 挙げ て   いる 住民 は い  ない よう  です 。 幸福の科学      側 から は , 特に どう し て    ほしい という 要望 は  いただい   て い  ませ ん 。 星取り    参加 は 当然 と さ れ , 不参加    は 白眼視     さ れる 。 室長 の 対応 に は 終始 誠実 さ が 感じ られ た 。 多く の 女性 が 生理   の こと で 悩ん で い  ます 。 
+HYP: これ に 不快  感 を 示す 住民   はい まし   たが , 現在 , 表   立っ て 反対 や 抗議 の 声 を    挙げて いる 住民   はい ない ようで す  。 幸福    の 科学 側 から は , 特に      どうして ほしい という 要望 はい ただ   い て いま せ  ん 。 星   取り 参加 は 当然 と さ れ , 不   参加 は 白   眼 視 さ れる 。 室長 の 対応 に は 終始 誠実 さ が 感じ られ た 。 多く の 女性 が 生  理 の こと で 悩ん で いま す  。 
+EVA:      S   I         D S     D S         S   I                  D  S         D S     S   S    S     I I              D  D S               S  S    I   S  S      S   I                  S   I    S   I I                                                  S  I             S  S    
+WER: 39.56%
+
