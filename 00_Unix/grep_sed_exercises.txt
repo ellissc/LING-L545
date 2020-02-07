@@ -1,0 +1,25 @@
+Grep exercises:
+
+How many uppercase words: 
+grep -c '^[A-ZÃĆŁŃŎŌÔÕŚŹŻŮČŘŠŽ]' wiki.txt
+    109272
+How many 4 letter words? 
+grep -c '^....$' wiki.txt
+    73
+Are there any words with no vowels? 
+grep -c -i '*\[^AEIOUYÃŎŌÔÕŮ]*' wiki.txt
+    16
+1 syllable words: 
+grep -c -i '^[^aeiouyãŏōôõů]*[aeiouyãŏōôõů][^aeiouyãŏōôõů]*$' wiki.txt
+    313
+two syllable words: 
+grep -c -i '^[^aeiouyãŏōôõů]*[aeiouyãŏōôõů][^aeiouyãŏōôõů]*[aeiouyãŏōôõů]*[^aeiouyãŏōôõů]*$' < wiki.txt
+    2324
+
+Sed exercises:
+
+Count word initial consonant sequences:
+sed 's/[^a-zA-ZãćłńŏōôõśźżůčřšžÃĆŁŃŎŌÔÕŚŹŻŮČŘŠŽ]\+/\n/g' < wiki.txt | sort -r | sed 's/[AEIOUYÃŎŌÔÕŮaeiouyãŏōôõů].*//' |uniq -c|sort -nr
+
+Count word final consonant sequences:
+sed 's/[^a-zA-ZãćłńŏōôõśźżůčřšžÃĆŁŃŎŌÔÕŚŹŻŮČŘŠŽ]\+/\n/g' < wiki.txt |sed 's/ //g' | rev|sort -gr| sed 's/[AEIOUYÃŎŌÔÕŮaeiouyãŏōôõů].*//' |rev|uniq -c|sort -nr
