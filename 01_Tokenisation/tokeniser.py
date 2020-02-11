@@ -5,7 +5,7 @@ abbr = ["age.","alb.","alt.","alz.","ang.","ast.","atd.","atp.","aus.","bal.","b
 def tokenise(line, abbr):
 	if line.strip() == '':
 		return ''
-	line = re.sub(r'([\(\)”?:!;])',r' \g<1> ', line) #splits off always-separating punctuation
+	line = re.sub(r'([\(\)”"?:!;])',r' \g<1> ', line) #splits off always-separating punctuation
 	line = re.sub(r'([^0-9]),',r'\g<1> ,', line) #leaves commas if no number vefore
 	line = re.sub(r',([^0-9])',r', \g<1>', line) #see slides, \g - group
 	line = re.sub(r'  +',' ', line[:-1]) #collapse sequences of spaces to one space
@@ -21,5 +21,12 @@ def tokenise(line, abbr):
 
 line = sys.stdin.readline()
 while line != '':
-	print(tokenise(line.strip('\n'), abbr))
+	tokenized = tokenise(line.strip('\n'), abbr)
+	print(tokenized)
+	#print(tokenized.replace(' ','\n'))
+	i = 1
+	for item in tokenized.split():
+		print(i, item, '_ '*8)
+		i +=1
+	#print(tokenized.split())
 	line = sys.stdin.readline()

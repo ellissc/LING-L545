@@ -1,0 +1,25 @@
+Practical 01b
+
+Questions:
+How should you segment sentences with semi-colon? As a single sentence or as two sentences? Should it depend on context?
+    -for sentences with a ';', it should be counted as a single sentence in most cases.
+Should sentences with ellipsis… be treated as a single sentence or as several sentences?
+    -Ellipsis '...' usually means a trailing off or completion of an idea, so it should be counted as several sentences.
+If there is an exclamation after the first word in the sentence should it be a separate sentence? How about if there is a comma?
+    -Not necessarily, as sometimes it could be used in a name (Yahoo!) which would not indicate a new sentence. Commas also would be the same, not indicating a new sentence.
+Can you think of some hard tasks for the segmenter?
+    -Abbreviations are a tough task for a lanugage without much documentation, there would be now way to differentiate between an abbreviation (e.g.) and the end of a sentence.
+
+
+questions:
+
+Why should we split punctuation from the token it goes with ?
+    -The punctuation is not considered a part of that token, but rather it could be considered a token of its own, as it conveys a separate meaning. 
+Should abbreviations with space in them be written as a single token or two tokens ?
+    -It would be logical to see them as one unit/token together, however it may cause problems later on when you are processing the text if they are not separated into two tokens.
+    How about numerals like 134 000 ?
+        -Numerals like '134 000' should be counted as one token, as it means 134000 (characters, for example) rather than 134 (characters) and 000 (vowels).
+If you have a case suffix following punctuation, how should it be tokenised ?
+    -
+Should contractions and clitics be a single token or two (or more) tokens ?
+    -Contradictions and clitics should be separate from the root, as they indicate a different meaning from the root. However, this can also cause problems when trying to disambiguate clitics that have the same surface form but different meanings.
