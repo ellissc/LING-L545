@@ -1,0 +1,29 @@
+Multichar_Symbols
+
+%<n%>                   ! Nombre
+%<cmp%>                 ! Composición
+
+%>                      ! Frontera de morfema
+%+                      ! Frontera de palabras compuestas (forma léxica)
+%#                      ! Frontera de palabras compuestas (forma superficial)
+
+
+LEXICON Root
+
+Nouns  ;
+
+LEXICON Cmp
+
+%<cmp%>%+:%# Nouns ;
+
+LEXICON N
+
+%<n%>:%> Cmp ;
+%<n%>: # ;
+
+LEXICON Nouns
+
+mapu:mapu N ; !"tierra, land"
+che:che N ; ! "gente, people"
+mamüll:mamüll N ; ! "madera, wood"
+wangku:wangku N ; ! "silla, chair"

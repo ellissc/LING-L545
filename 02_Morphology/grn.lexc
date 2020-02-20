@@ -1,0 +1,36 @@
+Multichar_Symbols
+
+%>     ! Front of the morpheme
+%<n%>  ! Noun
+%<gen%>! Genitive
+%<loc%>! Location
+%{m%}
+%<der_kue%>
+
+LEXICON Root
+
+Nouns ;
+
+LEXICON N
+
+%<n%>: CASE ;
+%<n%>: SUBST ;
+
+LEXICON SUBST
+
+%<der_kue%>:%>kue # "weight: 1.0" ;
+
+LEXICON CASE
+
+%<loc%>:%>%{m%}e #; !"a,en"
+%<gen%>:%>gui #; ! "de"
+%<nom%>: # ; ! ""
+
+LEXICON Nouns
+
+ava:ava N ; ! "raza, gente"
+óga:óga N ; ! "house"
+irũ:irũ N ; ! "friend"
+apyka:apyka N ; ! "chair"
+tembiasa:tembiasa N ;
+tembiasakue:tembiasakue N ;
