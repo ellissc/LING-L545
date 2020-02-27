@@ -1,0 +1,30 @@
+Multichar_Symbols
+
+%>   !front of morpheme
+%<n%> !noun
+%<nom%>
+%<acc%>
+%<gen%>
+%<dat%>
+%<abl%>
+%<instr%>
+%<loc%>
+
+LEXICON Root
+
+Nouns ;
+
+LEXICON CASE
+
+%<nom%>
+%<acc%>:%>ը #;
+%<gen%>
+%<dat%>
+%<abl%>
+%<instr%>
+%<loc%>
+
+LEXICON Nouns
+
+մայր:մայր N ;  !Mother
+հեռախոս:հեռախոս N ;  !telephone
