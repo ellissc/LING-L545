@@ -21,8 +21,6 @@ LEXICON Root
 
 Nouns ;
 
-DIGITLEX ;
-
 LEXICON N
 
 %<n%>: CASE ;
@@ -50,7 +48,7 @@ LEXICON N-SPA
 
 LEXICON NUM-DIGIT
 
-%<num%>:%- CASE ;
+%<num%>:%- CASE
 
 LEXICON LOOP
 
@@ -59,15 +57,30 @@ DIGITLEX ;
 
 LEXICON LAST-DIGIT
 
+1:1%{d%} NUM-DIGIT ;
+
+    2 - mokõi
+3:3 NUM-DIGIT
+   4 - irundy
+    5 - po
+    6 - poteĩ
+    7 - pokõi
+8:8 - poapy
+9:9 
+    2 - mokõi
+    4 - irundy
+    5 - po
+    6 - poteĩ
+    7 - pokõi
+    8 - poapy
+    9 - porundy
+ - porundy
+
+
+
+LEXICON DIGITLEX
 1:1%{d%} NUM-DIGIT ; !"peteĩ"
-2:2 NUM-DIGIT ; !mokõi
 3:3 NUM-DIGIT ; !"mbohapy"
-4:4 NUM-DIGIT ; !irundy
-5:5 NUM-DIGIT ; !po
-6:6%{d%} NUM-DIGIT ; !poteĩ
-7:7 NUM-DIGIT ; !pokõi
-8:8 NUM-DIGIT ; !poapy
-9:9 NUM-DIGIT ; !porundy
 
 LEXICON DIGITLEX
 
@@ -89,9 +102,7 @@ ava:ava N ; ! "raza, gente"
 irũ:irũ N ; ! "friend"
 apyka:apyka N ; ! "chair"
 tembiasa:tembiasa N ;
-!tembiasakue:tembiasakue N ;
+tembiasakue:tembiasakue N ;
 akãvai:akãvai N ;
 asociación:asociación N-SPA ;
 declaración:declaración N-SPA ;
-jagua:jagua N ;
-ja:ja N ;
