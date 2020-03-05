@@ -59,6 +59,7 @@ DIGITLEX ;
 
 LEXICON LAST-DIGIT
 
+%0:%0%{d%} NUM-DIGIT ; ! "papa'ỹ"
 1:1%{d%} NUM-DIGIT ; !"peteĩ"
 2:2 NUM-DIGIT ; !mokõi
 3:3 NUM-DIGIT ; !"mbohapy"
