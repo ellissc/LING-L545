@@ -32,13 +32,16 @@ extracts n-grams from a given array, n in range 3-8
 calculates basic vocabulary overlap between the different authors, prints to command line
 
 
-### conllu2tfidf(dir_conllu)
+### conllu2tfidf(dir_conllu, n_low=2, n_high=10)
 
-reads conllu files (from dir_conllu) and returns tfidf vectors and author labels
+reads conllu files (from dir_conllu) and returns tfidf vectors and author labels. 
+n_low and n_high designate the range for n-grams.
   
 
-### k_means(tfidf_x,labels,show)
+### k_means(tfidf_x,labels,show=False, normalization=True)
 
 Performs k-means clustering on the tfidf_x vector, compares it with the labels
 
 Show is a boolean, True prints verbose version of the function
+
+Normalization is a boolean, True normalizes the tf-idf vector for quicker performance (false skips normalization, processes slower but garners higher metric scores)
