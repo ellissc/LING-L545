@@ -5,6 +5,8 @@ Text file location:  "/mnt/c/Users/Ellis/Desktop/L445/LING-L545/final_project/ct
 
 Conllu file location: "/mnt/c/Users/Ellis/Desktop/L445/LING-L545/final_project/ctexts/conllu_files/"
   under the variable dir_conllu
+
+Add the udpipe model to path: export PATH=$PATH:/mnt/c/Users/Ellis/Desktop/L445/LING-L545/final_project/udpipe/src
   
 ## Function usage:
 
